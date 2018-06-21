@@ -1,4 +1,4 @@
-package ru.ibank;
+package ru.ibank.model.user;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

@@ -1,4 +1,7 @@
-package ru.ibank;
+package ru.ibank.model.user;
+
+import ru.ibank.model.user.UserCreateResponse;
+import ru.ibank.model.user.UserRequest;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

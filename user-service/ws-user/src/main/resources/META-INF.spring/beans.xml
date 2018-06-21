@@ -10,11 +10,11 @@
 
 
     <cxf:cxfEndpoint id="userWS"
-                     serviceClass="ru.ibank.UserWS"
+                     serviceClass="ru.ibank.model.user.UserWS"
                      address="/User"/>
 
 
-    <bean id="userService" class="ru.ibank.UserService"/>
+    <bean id="userService" class="ru.ibank.model.user.UserService"/>
 
 
 </beans>
