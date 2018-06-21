@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+
+        <route id="mainRoute">
+            <from uri="cxf:bean:userWS"/>
+            <choice>
+                <when>
+                    <to uri="direct:createUser"/>
+                </when>
+            </choice>
+        </route>
+
+        <route id="createUserRoute">
+            <from uri="direct:createUser"/>
+            <bean ref="ru.ibank.UserService" method="create"/>
+        </route>
+
+        <route id="findUserRoute">
+            <from uri="direct:findUser"/>
+            <bean ref="ru.ibank.UserService" method="find"/>
+        </route>
+
+        <route id="updateUserRoute">
+            <from uri="direct:updateUser"/>
+            <bean ref="ru.ibank.UserService" method="update"/>
+        </route>
+
+    </camelContext>
+
+</beans>

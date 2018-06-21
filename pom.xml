@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.ibank</groupId>
+    <artifactId>i-bank</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <project.camel.version>2.17.0</project.camel.version>
+        <project.cxf.version>3.1.5</project.cxf.version>
+        <project.activemq.version>5.11.0</project.activemq.version>
+        <project.slf4j.version>1.7.25</project.slf4j.version>
+    </properties>
+    
+    <modules>
+        <module>user-service</module>
+        <module>db-ibank</module>
+    </modules>
+
+
+</project>
