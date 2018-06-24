@@ -20,17 +20,17 @@
 
         <route id="createUserRoute">
             <from uri="direct:createUser"/>
-            <bean ref="ru.ibank.model.user.UserService" method="create"/>
+            <bean ref="ru.ibank.ws.user.UserService" method="create"/>
         </route>
 
         <route id="findUserRoute">
             <from uri="direct:findUser"/>
-            <bean ref="ru.ibank.model.user.UserService" method="find"/>
+            <bean ref="ru.ibank.ws.user.UserService" method="find"/>
         </route>
 
         <route id="updateUserRoute">
             <from uri="direct:updateUser"/>
-            <bean ref="ru.ibank.model.user.UserService" method="update"/>
+            <bean ref="ru.ibank.ws.user.UserService" method="update"/>
         </route>
 
     </camelContext>
