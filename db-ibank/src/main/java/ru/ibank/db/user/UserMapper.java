@@ -1,5 +1,5 @@
 package ru.ibank.db.user;
 
-public interface UserDAO {
+public interface UserMapper {
     User findUserById (long userId);
 }

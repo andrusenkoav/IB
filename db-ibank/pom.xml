@@ -27,6 +27,19 @@
             <version>${project.spring.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${project.spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${project.spring.version}</version>
+        </dependency>
+
+
         <!-- joda-time -->
         <dependency>
             <groupId>joda-time</groupId>
