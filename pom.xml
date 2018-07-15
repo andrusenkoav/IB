@@ -12,7 +12,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <project.spring.version>4.3.16.RELEASE</project.spring.version>
+        <project.spring.version>3.2.16.RELEASE</project.spring.version>
         <project.camel.version>2.17.0</project.camel.version>
         <project.cxf.version>3.1.5</project.cxf.version>
         <project.activemq.version>5.11.0</project.activemq.version>
@@ -20,9 +20,8 @@
     </properties>
     
     <modules>
-        <module>user-service</module>
         <module>db-ibank</module>
+        <module>user-service</module>
     </modules>
-
 
 </project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<features name="CustomRepository">
+    <feature name="get-started-basic">
+        <bundle>mvn:joda-time/joda-time/2.10</bundle>
+        <bundle>mvn:org.mybatis/mybatis/3.4.0</bundle>
+        <bundle>mvn:org.mybatis/mybatis-spring/1.3.2</bundle>
+        <bundle>mvn:org.postgresql/postgresql/42.2.2.jre7</bundle>
+        <bundle>mvn:ru.ibank/db-ibank/1.0-SNAPSHOT</bundle>
+        <bundle>mvn:ru.ibank/model-user/1.0-SNAPSHOT</bundle>
+        <bundle>mvn:ru.ibank/ws-user/1.0-SNAPSHOT</bundle>
+        <feature version="3.2.16.RELEASE_1">spring-jdbc</feature>
+    </feature>
+</features>

@@ -18,7 +18,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="META-INF/mappers/user-mapper.xml"/>
+        <mapper resource="META-INF/mappers/UserMapper.xml"/>
     </mappers>
 
 </configuration>

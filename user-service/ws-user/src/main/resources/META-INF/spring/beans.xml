@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:cxf="http://camel.apache.org/schema/cxf"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+       http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd">
+
+
+    <cxf:cxfEndpoint id="userWS"
+                     serviceClass="ru.ibank.model.user.UserWS"
+                     address="/UserWs">
+
+        <cxf:properties>
+            <entry key="dataFormat" value="POJO"/>
+        </cxf:properties>
+    </cxf:cxfEndpoint>
+
+
+    <bean id="userService" class="ru.ibank.ws.user.UserService">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+
+    <bean id="testProcess" class="ru.ibank.ws.user.TestProcess">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+
+    <osgi:reference id="userMapper"
+                    interface="ru.ibank.db.user.UserMapper"/>
+
+</beans>

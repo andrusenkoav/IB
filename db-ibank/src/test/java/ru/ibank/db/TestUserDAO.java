@@ -16,7 +16,7 @@ public class TestUserDAO {
         Reader reader = null;
         try {
             //Читаем файл с настройками подключения и настройками MyBatis
-            reader = Resources.getResourceAsReader("META-INF/db-config.xml");
+            reader = Resources.getResourceAsReader("META-INF/SqlMapConfig.xml");
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
             userMapper = sqlSessionFactory.openSession().getMapper(UserMapper.class);
 
