@@ -3,8 +3,8 @@ package ru.ibank.db;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import ru.ibank.db.user.User;
-import ru.ibank.db.user.UserMapper;
+import ru.ibank.db.mappers.user.User;
+import ru.ibank.db.mappers.user.UserMapper;
 
 import java.io.IOException;
 import java.io.Reader;

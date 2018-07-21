@@ -28,6 +28,6 @@
     </bean>
 
     <osgi:reference id="userMapper"
-                    interface="ru.ibank.db.user.UserMapper"/>
+                    interface="ru.ibank.db.mappers.user.UserMapper"/>
 
 </beans>

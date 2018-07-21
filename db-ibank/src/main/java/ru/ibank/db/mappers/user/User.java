@@ -1,7 +1,10 @@
-package ru.ibank.db.user;
+package ru.ibank.db.mappers.user;
 
 import org.joda.time.LocalDate;
 
+import javax.xml.bind.annotation.XmlType;
+
+@XmlType (propOrder = {"lastName","firstName","middleName","birthday"})
 public class User {
     private String firstName;
     private String middleName;

@@ -1,8 +1,8 @@
 package ru.ibank.ws.user;
 
 import org.apache.camel.Body;
-import ru.ibank.db.user.User;
-import ru.ibank.db.user.UserMapper;
+import ru.ibank.db.mappers.user.User;
+import ru.ibank.db.mappers.user.UserMapper;
 import ru.ibank.model.user.UserRequest;
 
 public class UserService {

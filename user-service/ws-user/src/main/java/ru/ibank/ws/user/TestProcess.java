@@ -2,8 +2,8 @@ package ru.ibank.ws.user;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import ru.ibank.db.user.User;
-import ru.ibank.db.user.UserMapper;
+import ru.ibank.db.mappers.user.User;
+import ru.ibank.db.mappers.user.UserMapper;
 
 import java.util.ArrayList;
 import java.util.List;

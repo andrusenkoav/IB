@@ -1,4 +1,4 @@
-package ru.ibank.db.user;
+package ru.ibank.db.mappers.user;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import ru.ibank.db.beans.SqlSessionCloseable;

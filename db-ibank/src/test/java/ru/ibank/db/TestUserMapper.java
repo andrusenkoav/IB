@@ -1,9 +1,9 @@
 package ru.ibank.db;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.ibank.db.user.User;
-import ru.ibank.db.user.UserMapper;
-import ru.ibank.db.user.UserMapperImpl;
+import ru.ibank.db.mappers.user.User;
+import ru.ibank.db.mappers.user.UserMapper;
+import ru.ibank.db.mappers.user.UserMapperImpl;
 
 public class TestUserMapper {
     public static void main(String[] args) {

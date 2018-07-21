@@ -1,7 +1,7 @@
 package ru.ibank.model.user;
 
 
-import ru.ibank.db.user.User;
+import ru.ibank.db.mappers.user.User;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -15,7 +15,7 @@ public interface UserWS {
     UserCreateResponse create (@WebParam UserRequest userRequest);
 
     @WebMethod
-    @WebResult (name = "response")
-    User findUserById (@WebParam Long userId);
+    @WebResult (name = "user")
+    User findUserById (@WebParam (name = "userId") Long userId);
 
 }
