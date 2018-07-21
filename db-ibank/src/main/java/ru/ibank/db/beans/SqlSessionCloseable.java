@@ -9,13 +9,15 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
-public class SqlSessionClosable implements SqlSession, Closeable {
-
-    public SqlSessionClosable (SqlSessionFactory sqlSessionFactory){
-        this.sqlSessionFactory = sqlSessionFactory;
-    }
+public class SqlSessionCloseable implements SqlSession, Closeable {
 
     private SqlSessionFactory sqlSessionFactory;
+    private SqlSession sqlSession;
+
+    public SqlSessionCloseable(SqlSessionFactory sqlSessionFactory){
+        this.sqlSessionFactory = sqlSessionFactory;
+        this.sqlSession = sqlSessionFactory.openSession(false);
+    }
 
     public <T> T selectOne(String s) {
         return null;
@@ -118,7 +120,7 @@ public class SqlSessionClosable implements SqlSession, Closeable {
     }
 
     public void close() {
-
+        sqlSession.close();
     }
 
     public void clearCache() {
@@ -130,7 +132,7 @@ public class SqlSessionClosable implements SqlSession, Closeable {
     }
 
     public <T> T getMapper(Class<T> aClass) {
-        return sqlSessionFactory.openSession(false).getMapper(aClass);
+        return sqlSession.getMapper(aClass);
     }
 
     public Connection getConnection() {

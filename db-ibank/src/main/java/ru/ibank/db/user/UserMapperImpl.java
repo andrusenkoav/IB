@@ -1,10 +1,7 @@
 package ru.ibank.db.user;
 
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Repository;
-import ru.ibank.db.beans.SqlSessionClosable;
+import ru.ibank.db.beans.SqlSessionCloseable;
 
 
 public class UserMapperImpl implements UserMapper {
@@ -13,7 +10,7 @@ public class UserMapperImpl implements UserMapper {
     private UserMapper userMapper;
 
     public User findUserById(long userId) {
-        try (SqlSessionClosable sqlSession = new SqlSessionClosable(sqlSessionFactory)){
+        try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
             userMapper = sqlSession.getMapper(UserMapper.class);
             return userMapper.findUserById(userId);
         }
