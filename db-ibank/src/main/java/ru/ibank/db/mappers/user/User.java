@@ -4,12 +4,22 @@ import org.joda.time.LocalDate;
 
 import javax.xml.bind.annotation.XmlType;
 
-@XmlType (propOrder = {"lastName","firstName","middleName","birthday"})
+@XmlType (propOrder = {"id","lastName","firstName","middleName","birthday"})
 public class User {
+    private Long id;
     private String firstName;
     private String middleName;
     private String lastName;
     private LocalDate birthday;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
