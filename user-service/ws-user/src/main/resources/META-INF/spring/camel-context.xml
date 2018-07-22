@@ -11,9 +11,8 @@
 
         <route id="userRoute">
             <from uri="cxf:bean:userWS"/>
-            <process ref="testProcess"/>
+            <bean ref="userService" method="findUserById"/>
 <!--
-
             <choice>
                 <when>
                     <simple>{in.getHeader.operationName} == "findUserById"</simple>

@@ -5,6 +5,8 @@ import ru.ibank.db.mappers.user.User;
 import ru.ibank.db.mappers.user.UserMapper;
 import ru.ibank.model.user.UserRequest;
 
+import java.util.ArrayList;
+
 public class UserService {
 
     private UserMapper userMapper;
@@ -17,7 +19,8 @@ public class UserService {
         return null;
     }
 
-    public User findUserById (@Body long userId){
+    public User findUserById (@Body ArrayList params){
+        Long userId = (Long) params.get(0);
         return userMapper.findUserById(userId);
     }
 
