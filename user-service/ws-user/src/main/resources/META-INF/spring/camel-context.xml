@@ -12,15 +12,12 @@
 
         <route id="userRoute">
             <from uri="cxf:bean:userWS"/>
-            <bean ref="userService" method="findUserById"/>
-<!--
             <choice>
                 <when>
-                    <simple>{in.getHeader.operationName} == "findUserById"</simple>
+                    <simple>${in.header.operationName} == "findUserById"</simple>
                     <bean ref="userService" method="findUserById"/>
                 </when>
             </choice>
--->
         </route>
 
     </camelContext>
