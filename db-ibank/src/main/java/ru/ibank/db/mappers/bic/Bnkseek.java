@@ -1,6 +1,7 @@
 package ru.ibank.db.mappers.bic;
 
-import org.joda.time.LocalDate;
+
+import java.time.LocalDate;
 
 public class Bnkseek {
     private String vkey;

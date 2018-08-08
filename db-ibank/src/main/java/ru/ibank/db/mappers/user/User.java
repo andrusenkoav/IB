@@ -1,8 +1,12 @@
 package ru.ibank.db.mappers.user;
 
-import org.joda.time.LocalDate;
 
+import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.time.LocalDate;
+import ru.ibank.db.adapters.LocalDateAdapter;
+
 
 @XmlType (propOrder = {"id","lastName","firstName","middleName","birthday"})
 public class User {
@@ -45,6 +49,8 @@ public class User {
         this.lastName = lastName;
     }
 
+    @XmlSchemaType(name="date")
+    @XmlJavaTypeAdapter(type = LocalDate.class, value = LocalDateAdapter.class)
     public LocalDate getBirthday() {
         return birthday;
     }

@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <features name="CustomRepository">
-    <feature name="ibank" version="1.0.0">
-        <bundle>mvn:joda-time/joda-time/2.10</bundle>
-        <bundle>mvn:org.mybatis/mybatis/3.4.0</bundle>
-        <bundle>mvn:org.mybatis/mybatis-spring/1.3.2</bundle>
+
+    <feature name="ibank-common" version="1.0.0">
+        <feature>camel-cxf</feature>
+        <feature>camel-spring</feature>
         <feature>spring-jdbc</feature>
+    </feature>
+
+    <feature name="ibank-db" version="1.0.0">
+        <bundle>mvn:org.mybatis/mybatis/3.4.5</bundle>
+        <bundle>mvn:org.mybatis/mybatis-spring/1.3.2</bundle>
         <bundle>mvn:org.postgresql/postgresql/42.2.2</bundle>
         <bundle>mvn:ru.ibank/db-ibank/1.0.0.SNAPSHOT</bundle>
+    </feature>
+
+    <feature name="ibank-user-service" version="1.0.0">
         <bundle>mvn:ru.ibank/model-user/1.0.0.SNAPSHOT</bundle>
         <bundle>mvn:ru.ibank/ws-user/1.0.0.SNAPSHOT</bundle>
     </feature>
+
 </features>
