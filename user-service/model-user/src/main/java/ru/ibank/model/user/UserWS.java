@@ -12,7 +12,7 @@ import javax.jws.WebService;
 public interface UserWS {
     @WebMethod
     @WebResult (name = "response")
-    UserCreateResponse create (@WebParam UserRequest userRequest);
+    Long createUser (@WebParam User user);
 
     @WebMethod
     @WebResult (name = "user")

@@ -1,13 +1,14 @@
 package ru.ibank.db.mappers.user;
 
 
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
 import ru.ibank.db.adapters.LocalDateAdapter;
 
-
+@XmlRootElement
 @XmlType (propOrder = {"id","lastName","firstName","middleName","birthday"})
 public class User {
     private Long id;

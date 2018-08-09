@@ -16,4 +16,23 @@
         select * from customers.person where id = #{id}
     </select>
 
+    <insert id="createUser" parameterType="ru.ibank.db.mappers.user.User">
+        <selectKey>
+
+        </selectKey>
+        insert into customers.person values (#{id}, #{lastName}, #{firstName}, #{middleName}, #{birthday})
+    </insert>
+
+    <delete id="deleteUser">
+        delete from customers.person where id = #{id}
+    </delete>
+
+    <update id="updateUser" parameterType="ru.ibank.db.mappers.user.User">
+        update customers.person set
+        first_name = #{firstName},
+        middle_name = #{middleName},
+        last_name = #{lastName},
+        birthday = #{birthday}
+    </update>
+
 </mapper>

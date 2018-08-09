@@ -17,6 +17,10 @@
                     <simple>${in.header.operationName} == "findUserById"</simple>
                     <bean ref="userService" method="findUserById"/>
                 </when>
+                <when>
+                    <simple>${in.header.operationName} == "createUser"</simple>
+                    <bean ref="userService" method="createUser"/>
+                </when>
             </choice>
         </route>
 
