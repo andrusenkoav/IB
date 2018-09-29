@@ -57,7 +57,7 @@
                         <Bundle-SymbolicName>${project.groupId}.${project.artifactId}</Bundle-SymbolicName>
                         <Bundle-Name>${project.name}</Bundle-Name>
                         <Bundle-Version>${project.version}</Bundle-Version>
-                        <Import-Package>ru.ibank.db.mappers.user,
+                        <Import-Package>ru.ibank.db.mapper.user,
                             *
                         </Import-Package>
                         <Include-Resource>src/main/resources</Include-Resource>

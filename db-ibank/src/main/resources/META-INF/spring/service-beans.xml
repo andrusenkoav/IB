@@ -8,6 +8,6 @@
 
     <osgi:service id="userMapper"
                   ref="userMapperImpl"
-                  interface="ru.ibank.db.mappers.user.UserMapper"/>
+                  interface="ru.ibank.db.mapper.user.UserMapper"/>
 
 </beans>

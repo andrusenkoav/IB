@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ru.ibank.db.mappers.user.UserMapper">
+<mapper namespace="ru.ibank.db.mapper.user.UserMapper">
 
-    <resultMap id="userResultMap" type="ru.ibank.db.mappers.user.User">
+    <resultMap id="userResultMap" type="ru.ibank.db.mapper.user.User">
         <result property="firstName" column="first_name"/>
         <result property="middleName" column="middle_name"/>
         <result property="lastName" column="last_name"/>
@@ -16,9 +16,9 @@
         select * from customers.person where id = #{id}
     </select>
 
-    <insert id="createUser" parameterType="ru.ibank.db.mappers.user.User">
-        <selectKey>
-
+    <insert id="createUser" parameterType="ru.ibank.db.mapper.user.User" keyProperty="id">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            select nextval('customers.seq_person') as id
         </selectKey>
         insert into customers.person values (#{id}, #{lastName}, #{firstName}, #{middleName}, #{birthday})
     </insert>
@@ -27,12 +27,13 @@
         delete from customers.person where id = #{id}
     </delete>
 
-    <update id="updateUser" parameterType="ru.ibank.db.mappers.user.User">
-        update customers.person set
-        first_name = #{firstName},
-        middle_name = #{middleName},
-        last_name = #{lastName},
-        birthday = #{birthday}
+    <update id="updateUser" parameterType="ru.ibank.db.mapper.user.User">
+        update customers.person
+        set first_name = #{firstName},
+            middle_name = #{middleName},
+            last_name = #{lastName},
+            birthday = #{birthday}
+        where id = #{id}
     </update>
 
 </mapper>

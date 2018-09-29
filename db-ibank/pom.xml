@@ -135,6 +135,9 @@
                         <Import-Package>org.postgresql,
                             *
                         </Import-Package>
+                        <Export-Package>
+                            ru.ibank.db.mapper.user
+                        </Export-Package>
                         <Include-Resource>src/main/resources</Include-Resource>
                     </instructions>
                 </configuration>

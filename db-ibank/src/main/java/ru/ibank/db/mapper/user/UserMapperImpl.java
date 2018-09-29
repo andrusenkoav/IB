@@ -1,7 +1,7 @@
-package ru.ibank.db.mappers.user;
+package ru.ibank.db.mapper.user;
 
 import org.apache.ibatis.session.SqlSessionFactory;
-import ru.ibank.db.beans.SqlSessionCloseable;
+import ru.ibank.db.bean.SqlSessionCloseable;
 
 
 public class UserMapperImpl implements UserMapper {
@@ -18,10 +18,11 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public long createUser(User user) {
+    public Long createUser(User user) {
         try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
             userMapper = sqlSession.getMapper(UserMapper.class);
-            return userMapper.createUser(user);
+            userMapper.createUser(user);
+            return user.getId();
         }
     }
 
@@ -34,10 +35,12 @@ public class UserMapperImpl implements UserMapper {
     }
 
     @Override
-    public void updateUser(User user) {
+    public void updateUser(User user) throws UserException {
         try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
             userMapper = sqlSession.getMapper(UserMapper.class);
             userMapper.updateUser(user);
+        } catch (Exception e) {
+           throw new UserException("Ошибка обновление записи:" + e.getMessage());
         }
     }
 

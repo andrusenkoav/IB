@@ -4,9 +4,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.ibank.db.mappers.user.User;
-import ru.ibank.db.mappers.user.UserMapper;
-import ru.ibank.db.mappers.user.UserMapperImpl;
+import ru.ibank.db.mapper.user.User;
+import ru.ibank.db.mapper.user.UserMapper;
+import ru.ibank.db.mapper.user.UserMapperImpl;
 
 public class TestUserMapper {
 

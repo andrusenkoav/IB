@@ -1,4 +1,4 @@
-package ru.ibank.db.mappers.user;
+package ru.ibank.db.mapper.user;
 
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
-import ru.ibank.db.adapters.LocalDateAdapter;
+import ru.ibank.db.adapter.LocalDateAdapter;
 
 @XmlRootElement
 @XmlType (propOrder = {"id","lastName","firstName","middleName","birthday"})

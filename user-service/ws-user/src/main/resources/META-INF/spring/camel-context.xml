@@ -21,6 +21,10 @@
                     <simple>${in.header.operationName} == "createUser"</simple>
                     <bean ref="userService" method="createUser"/>
                 </when>
+                <when>
+                    <simple>${in.header.operationName} == "updateUser"</simple>
+                    <bean ref="userService" method="updateUser"/>
+                </when>
             </choice>
         </route>
 

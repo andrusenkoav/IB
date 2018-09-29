@@ -1,4 +1,4 @@
-package ru.ibank.db.adapters;
+package ru.ibank.db.adapter;
 
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;

@@ -1,8 +1,9 @@
 package ru.ibank.ws.user;
 
 import org.apache.camel.Body;
-import ru.ibank.db.mappers.user.User;
-import ru.ibank.db.mappers.user.UserMapper;
+import ru.ibank.db.mapper.user.User;
+import ru.ibank.db.mapper.user.UserException;
+import ru.ibank.db.mapper.user.UserMapper;
 
 import java.util.ArrayList;
 
@@ -19,18 +20,16 @@ public class UserService {
         return userMapper.createUser(user);
     }
 
-    public Boolean updateUser(@Body User user) {
+    public Boolean updateUser(@Body User user) throws UserException {
         userMapper.updateUser(user);
         return true;
     }
-
 
     public Boolean deleteUser(@Body ArrayList params) {
         Long userId = (Long) params.get(0);
         userMapper.deleteUser(userId);
         return true;
     }
-
 
     public UserMapper getUserMapper() {
         return userMapper;

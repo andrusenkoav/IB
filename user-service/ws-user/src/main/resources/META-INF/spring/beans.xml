@@ -25,6 +25,6 @@
 
 
     <osgi:reference id="userMapper"
-                    interface="ru.ibank.db.mappers.user.UserMapper"/>
+                    interface="ru.ibank.db.mapper.user.UserMapper"/>
 
 </beans>

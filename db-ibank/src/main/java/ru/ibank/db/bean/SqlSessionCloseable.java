@@ -1,4 +1,4 @@
-package ru.ibank.db.beans;
+package ru.ibank.db.bean;
 
 import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.executor.BatchResult;
