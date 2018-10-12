@@ -19,12 +19,18 @@
     </cxf:cxfEndpoint>
 
 
-    <bean id="userService" class="ru.ibank.ws.user.UserService">
-        <property name="userMapper" ref="userMapper"/>
+    <bean id="mybatis" class="org.apache.camel.component.mybatis.MyBatisComponent">
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 
 
-    <osgi:reference id="userMapper"
-                    interface="ru.ibank.db.mapper.user.UserMapper"/>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="postgresqlXADataSource"/>
+        <property name="mapperLocations" value="META-INF/mapper/*.xml"/>
+    </bean>
+
+
+    <osgi:reference id="postgresqlXADataSource"
+                    interface="javax.sql.DataSource"/>
 
 </beans>

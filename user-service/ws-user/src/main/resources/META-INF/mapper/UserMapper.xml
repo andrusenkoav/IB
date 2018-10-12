@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ru.ibank.UserMapper">
+
+    <resultMap id="userResultMap" type="ru.ibank.model.user.User">
+        <result property="firstName" column="first_name"/>
+        <result property="middleName" column="middle_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="birthday" javaType="java.time.LocalDate" column="birthday" jdbcType="DATE"/>
+    </resultMap>
+
+    <select id="findUserById" parameterType="long" resultMap="userResultMap">
+        select * from customers.person where id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="ru.ibank.model.user.User" keyProperty="id">
+        <selectKey keyProperty="id" resultType="long" order="BEFORE">
+            select nextval('customers.seq_person') as id
+        </selectKey>
+        insert into customers.person values (#{id}, #{lastName}, #{firstName}, #{middleName}, #{birthday})
+    </insert>
+
+    <delete id="delete">
+        delete from customers.person where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="ru.ibank.model.user.User">
+        update customers.person
+        set first_name = #{firstName},
+            middle_name = #{middleName},
+            last_name = #{lastName},
+            birthday = #{birthday}
+        where id = #{id}
+    </update>
+
+</mapper>

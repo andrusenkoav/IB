@@ -12,18 +12,59 @@
 
         <route id="userRoute">
             <from uri="cxf:bean:userWS"/>
-            <choice>
+
+            <setBody>
+                <simple>${body[0]}</simple>
+            </setBody>
+
+            <choice id="chooseOperation">
                 <when>
                     <simple>${in.header.operationName} == "findUserById"</simple>
-                    <bean ref="userService" method="findUserById"/>
+                    <to uri="mybatis:ru.ibank.UserMapper.findUserById?statementType=SelectOne"/>
                 </when>
                 <when>
-                    <simple>${in.header.operationName} == "createUser"</simple>
-                    <bean ref="userService" method="createUser"/>
+                    <simple>${in.header.operationName} == "addUser"</simple>
+                    <to uri="mybatis:ru.ibank.UserMapper.insert?statementType=Insert&amp;outputHeader=insertCount"/>
+                    <setBody>
+                        <simple>${body.id}</simple>
+                    </setBody>
                 </when>
                 <when>
                     <simple>${in.header.operationName} == "updateUser"</simple>
-                    <bean ref="userService" method="updateUser"/>
+                    <to uri="mybatis:ru.ibank.UserMapper.update?statementType=Update"/>
+
+                    <choice>
+                        <when>
+                            <simple>${in.header.CamelMyBatisResult} > 0</simple>
+                            <setBody>
+                                <simple resultType="java.lang.Boolean">true</simple>
+                            </setBody>
+                        </when>
+                        <otherwise>
+                            <setBody>
+                                <simple resultType="java.lang.Boolean">false</simple>
+                            </setBody>
+                        </otherwise>
+                    </choice>
+                </when>
+                <when>
+                    <simple>${in.header.operationName} == "deleteUser"</simple>
+                    <to uri="mybatis:ru.ibank.UserMapper.delete?statementType=Delete"/>
+
+                    <choice>
+                        <when>
+                            <simple>${in.header.CamelMyBatisResult} > 0</simple>
+                            <setBody>
+                                <simple resultType="java.lang.Boolean">true</simple>
+                            </setBody>
+                        </when>
+                        <otherwise>
+                            <setBody>
+                                <simple resultType="java.lang.Boolean">false</simple>
+                            </setBody>
+                        </otherwise>
+                    </choice>
+
                 </when>
             </choice>
         </route>

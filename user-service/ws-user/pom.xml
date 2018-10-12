@@ -10,7 +10,6 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.ibank</groupId>
     <artifactId>ws-user</artifactId>
     <version>1.0.0.SNAPSHOT</version>
     <packaging>bundle</packaging>
@@ -24,7 +23,6 @@
             <artifactId>model-user</artifactId>
             <version>1.0.0.SNAPSHOT</version>
         </dependency>
-
 
         <dependency>
             <groupId>ru.ibank</groupId>
@@ -76,6 +74,24 @@
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-cxf</artifactId>
+            <version>${project.camel.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-mybatis</artifactId>
+            <version>${project.camel.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-groovy</artifactId>
+            <version>${project.camel.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-script</artifactId>
             <version>${project.camel.version}</version>
         </dependency>
 
@@ -150,7 +166,6 @@
                         <Bundle-Version>${project.version}</Bundle-Version>
                         <Import-Package>
                             ru.ibank.model.user,
-                            ru.ibank.db.mapper.user,
                             *
                         </Import-Package>
                         <Include-Resource>src/main/resources</Include-Resource>

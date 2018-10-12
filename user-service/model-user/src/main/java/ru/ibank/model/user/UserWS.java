@@ -1,9 +1,5 @@
 package ru.ibank.model.user;
 
-
-import ru.ibank.db.mapper.user.User;
-import ru.ibank.db.mapper.user.UserException;
-
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
@@ -12,8 +8,8 @@ import javax.jws.WebService;
 @WebService
 public interface UserWS {
     @WebMethod
-    @WebResult (name = "response")
-    Long createUser (@WebParam User user);
+    @WebResult (name = "result")
+    Long addUser (@WebParam(name = "user") User user);
 
     @WebMethod
     @WebResult (name = "user")
@@ -21,6 +17,10 @@ public interface UserWS {
 
     @WebMethod
     @WebResult (name = "result")
-    Boolean updateUser (@WebParam(name = "user") User user) throws UserException;
+    Boolean updateUser (@WebParam(name = "user") User user);
+
+    @WebMethod
+    @WebResult (name = "result")
+    Boolean deleteUser (@WebParam(name = "userId") Long id);
 
 }

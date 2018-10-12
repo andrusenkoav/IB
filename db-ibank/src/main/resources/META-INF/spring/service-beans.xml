@@ -10,4 +10,14 @@
                   ref="userMapperImpl"
                   interface="ru.ibank.db.mapper.user.UserMapper"/>
 
+
+
+    <osgi:service id="postgresqlDataSource"
+                    ref="dataSource"
+                    interface="javax.sql.DataSource"/>
+
+    <osgi:service id="postgresqlXADataSource"
+                  ref="xaDataSource"
+                  interface="javax.sql.XADataSource"/>
+
 </beans>
