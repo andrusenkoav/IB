@@ -15,17 +15,6 @@
     <version>1.0.0.SNAPSHOT</version>
     <packaging>bundle</packaging>
 
-    <dependencies>
-
-        <!-- modules -->
-
-        <dependency>
-            <groupId>ru.ibank</groupId>
-            <artifactId>db-ibank</artifactId>
-            <version>1.0.0.SNAPSHOT</version>
-        </dependency>
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
