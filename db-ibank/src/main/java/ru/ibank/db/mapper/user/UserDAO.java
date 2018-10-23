@@ -6,7 +6,7 @@ public interface UserDAO {
 
     Long createUser (UserDTO user);
 
-    void deleteUser (long userId);
+    Boolean deleteUser (long userId);
 
     void updateUser (UserDTO user) throws UserException;
 }

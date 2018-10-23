@@ -27,10 +27,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void deleteUser(long userId) {
+    public Boolean deleteUser(long userId) {
         try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
             userMapper = sqlSession.getMapper(UserDAO.class);
             userMapper.deleteUser(userId);
+            return true;
+        } catch (Exception e){
+            return false;
         }
     }
 

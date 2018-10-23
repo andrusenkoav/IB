@@ -20,7 +20,7 @@
         <selectKey keyProperty="id" resultType="long" order="BEFORE">
             select nextval('customers.seq_person') as id
         </selectKey>
-        insert into customers.person values (#{id}, #{lastName}, #{firstName}, #{middleName}, #{birthday})
+        insert into customers.person (id, last_name, first_name, middle_name, birthday) values (#{id}, #{lastName}, #{firstName}, #{middleName}, #{birthday})
     </insert>
 
     <delete id="delete">
