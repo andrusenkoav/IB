@@ -47,5 +47,7 @@ public class UserDAOImplTest {
 
     @Test
     public void updateUser() {
+        Boolean updated = userService.updateUser(user);
+        Assert.assertTrue(updated);
     }
 }

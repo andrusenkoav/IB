@@ -8,5 +8,5 @@ public interface UserDAO {
 
     Boolean deleteUser (long userId);
 
-    void updateUser (UserDTO user) throws UserException;
+    Boolean updateUser (UserDTO user);
 }

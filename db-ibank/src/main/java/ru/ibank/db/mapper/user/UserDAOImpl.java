@@ -38,12 +38,13 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void updateUser(UserDTO user) throws UserException {
+    public Boolean updateUser(UserDTO user) {
         try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
             userMapper = sqlSession.getMapper(UserDAO.class);
             userMapper.updateUser(user);
+            return true;
         } catch (Exception e) {
-           throw new UserException("Ошибка обновление записи:" + e.getMessage());
+           return false;
         }
     }
 
