@@ -9,15 +9,15 @@ import javax.jws.WebService;
 public interface UserWS {
     @WebMethod
     @WebResult (name = "result")
-    Long addUser (@WebParam(name = "user") User user);
+    Long addUser (@WebParam(name = "user") UserDTO user);
 
     @WebMethod
     @WebResult (name = "user")
-    User findUserById (@WebParam (name = "userId") Long userId);
+    UserDTO findUserById (@WebParam (name = "userId") Long userId);
 
     @WebMethod
     @WebResult (name = "result")
-    Boolean updateUser (@WebParam(name = "user") User user);
+    Boolean updateUser (@WebParam(name = "user") UserDTO user);
 
     @WebMethod
     @WebResult (name = "result")

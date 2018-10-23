@@ -6,9 +6,9 @@
                            http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
 
-    <osgi:service id="userMapper"
-                  ref="userMapperImpl"
-                  interface="ru.ibank.db.mapper.user.UserMapper"/>
+    <osgi:service id="userDAO"
+                  ref="userDAOImpl"
+                  interface="ru.ibank.db.mapper.user.UserDAO"/>
 
 
 

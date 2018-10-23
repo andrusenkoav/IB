@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="ru.ibank.db.mapper.user.UserMapper">
+<mapper namespace="ru.ibank.db.mapper.user.UserDAO">
 
-    <resultMap id="userResultMap" type="ru.ibank.db.mapper.user.User">
+    <resultMap id="userResultMap" type="ru.ibank.db.mapper.user.UserDTO">
         <result property="firstName" column="first_name"/>
         <result property="middleName" column="middle_name"/>
         <result property="lastName" column="last_name"/>
@@ -16,7 +16,7 @@
         select * from customers.person where id = #{id}
     </select>
 
-    <insert id="createUser" parameterType="ru.ibank.db.mapper.user.User" keyProperty="id">
+    <insert id="createUser" parameterType="ru.ibank.db.mapper.user.UserDTO" keyProperty="id">
         <selectKey keyProperty="id" resultType="long" order="BEFORE">
             select nextval('customers.seq_person') as id
         </selectKey>
@@ -27,7 +27,7 @@
         delete from customers.person where id = #{id}
     </delete>
 
-    <update id="updateUser" parameterType="ru.ibank.db.mapper.user.User">
+    <update id="updateUser" parameterType="ru.ibank.db.mapper.user.UserDTO">
         update customers.person
         set first_name = #{firstName},
             middle_name = #{middleName},

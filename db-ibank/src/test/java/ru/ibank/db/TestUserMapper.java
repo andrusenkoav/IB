@@ -4,9 +4,9 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.ibank.db.mapper.user.User;
-import ru.ibank.db.mapper.user.UserMapper;
-import ru.ibank.db.mapper.user.UserMapperImpl;
+import ru.ibank.db.mapper.user.UserDTO;
+import ru.ibank.db.mapper.user.UserDAO;
+import ru.ibank.db.mapper.user.UserDAOImpl;
 
 public class TestUserMapper {
 
@@ -19,8 +19,8 @@ public class TestUserMapper {
 
     @Test
     public void findUserById () {
-        UserMapper userMapper = ctx.getBean("userMapperImpl", UserMapperImpl.class);
-        User user = userMapper.findUserById(2);
+        UserDAO userMapper = ctx.getBean("userMapperImpl", UserDAOImpl.class);
+        UserDTO user = userMapper.findUserById(2);
         Assert.assertTrue("Фамилия не совпадает", (user.getLastName().equalsIgnoreCase("Андрусенко")));
         System.out.println(user);
     }

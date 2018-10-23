@@ -4,23 +4,23 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import ru.ibank.db.bean.SqlSessionCloseable;
 
 
-public class UserMapperImpl implements UserMapper {
+public class UserDAOImpl implements UserDAO {
 
     private SqlSessionFactory sqlSessionFactory;
-    private UserMapper userMapper;
+    private UserDAO userMapper;
 
     @Override
-    public User findUserById(long userId) {
+    public UserDTO findUserById(long userId) {
         try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
-            userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper = sqlSession.getMapper(UserDAO.class);
             return userMapper.findUserById(userId);
         }
     }
 
     @Override
-    public Long createUser(User user) {
+    public Long createUser(UserDTO user) {
         try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
-            userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper = sqlSession.getMapper(UserDAO.class);
             userMapper.createUser(user);
             return user.getId();
         }
@@ -29,15 +29,15 @@ public class UserMapperImpl implements UserMapper {
     @Override
     public void deleteUser(long userId) {
         try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
-            userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper = sqlSession.getMapper(UserDAO.class);
             userMapper.deleteUser(userId);
         }
     }
 
     @Override
-    public void updateUser(User user) throws UserException {
+    public void updateUser(UserDTO user) throws UserException {
         try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
-            userMapper = sqlSession.getMapper(UserMapper.class);
+            userMapper = sqlSession.getMapper(UserDAO.class);
             userMapper.updateUser(user);
         } catch (Exception e) {
            throw new UserException("Ошибка обновление записи:" + e.getMessage());

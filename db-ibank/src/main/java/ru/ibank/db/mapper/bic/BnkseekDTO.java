@@ -3,7 +3,7 @@ package ru.ibank.db.mapper.bic;
 
 import java.time.LocalDate;
 
-public class Bnkseek {
+public class BnkseekDTO {
     private String vkey;
     private String real;
     private String pzn;
