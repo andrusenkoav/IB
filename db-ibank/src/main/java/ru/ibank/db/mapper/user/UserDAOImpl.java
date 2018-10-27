@@ -1,7 +1,7 @@
 package ru.ibank.db.mapper.user;
 
+import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import ru.ibank.db.bean.SqlSessionCloseable;
 
 
 public class UserDAOImpl implements UserDAO {
@@ -11,40 +11,59 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public UserDTO findUserById(long userId) {
-        try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
+
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        try {
             userMapper = sqlSession.getMapper(UserDAO.class);
             return userMapper.findUserById(userId);
+        } finally {
+            sqlSession.close();
         }
     }
 
     @Override
     public Long createUser(UserDTO user) {
-        try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
+
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        try {
             userMapper = sqlSession.getMapper(UserDAO.class);
             userMapper.createUser(user);
             return user.getId();
+        } finally {
+            sqlSession.close();
         }
     }
 
     @Override
     public Boolean deleteUser(long userId) {
-        try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
+
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        try {
             userMapper = sqlSession.getMapper(UserDAO.class);
             userMapper.deleteUser(userId);
             return true;
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
+        } finally {
+            sqlSession.close();
         }
     }
 
     @Override
     public Boolean updateUser(UserDTO user) {
-        try (SqlSessionCloseable sqlSession = new SqlSessionCloseable(sqlSessionFactory)){
+
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+
+        try {
             userMapper = sqlSession.getMapper(UserDAO.class);
             userMapper.updateUser(user);
             return true;
         } catch (Exception e) {
-           return false;
+            return false;
+        } finally {
+            sqlSession.close();
         }
     }
 
