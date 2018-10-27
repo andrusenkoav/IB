@@ -1,53 +1,57 @@
 package ru.ibank.db.mapper.user;
 
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-@FixMethodOrder(MethodSorters.JVM)
-public class UserDAOImplTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+@DisplayName("Тест: userService")
+class UserDAOImplTest {
 
     private static ClassPathXmlApplicationContext ctx;
-    private static UserDAO userService;
+    private static UserDAOImpl userService;
     private static UserDTO user;
 
-    @BeforeClass
-    public static void init() {
-        ctx = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/applicationContext.xml", "META-INF/spring/beans.xml"});
+    @BeforeAll
+    static void init() {
+        ctx = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/beans.xml", "META-INF/spring/applicationContext.xml"});
         userService = ctx.getBean("userDAOImpl", UserDAOImpl.class);
-
         user = new UserDTO();
-        user.setFirstName("Иван");
         user.setLastName("Иванов");
+        user.setFirstName("Иван");
         user.setMiddleName("Иванович");
     }
 
-    @Test
-    public void createUser() {
-        Long id = userService.createUser(user);
-        Assert.assertNotNull(id);
-        user.setId(id);
+    @Test()
+    @DisplayName("Создание нового пользователя")
+    void createUser() {
+       Long id = userService.createUser(user);
+       assertNotNull(id);
     }
 
     @Test
-    public void findUserById() {
-        UserDTO userFound = userService.findUserById(user.getId());
-        Assert.assertEquals("Пользователи не совпадает", user, userFound);
-        System.out.println(user);
+    @DisplayName("Поиск пользователя по id")
+    void findUserById() {
+        UserDTO findUser = userService.findUserById(user.getId());
+        assertEquals(user, findUser);
     }
 
     @Test
-    public void deleteUser() {
-        Boolean deleted = userService.deleteUser(user.getId());
-        Assert.assertTrue(deleted);
+    @DisplayName("Изменение пользователя")
+    void updateUser() {
+        user.setFirstName("Дмитрий");
+        Boolean result = userService.updateUser(user);
     }
 
     @Test
-    public void updateUser() {
-        Boolean updated = userService.updateUser(user);
-        Assert.assertTrue(updated);
+    @DisplayName("Удаление пользователя")
+    void deleteUser() {
+        Boolean result = userService.deleteUser(user.getId());
+        assertTrue(result);
     }
+
 }

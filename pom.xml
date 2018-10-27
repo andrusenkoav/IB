@@ -17,6 +17,8 @@
         <project.cxf.version>3.1.5</project.cxf.version>
         <project.activemq.version>5.11.0</project.activemq.version>
         <project.slf4j.version>1.7.25</project.slf4j.version>
+        <project.junit.jupiter.version>5.0.0-M4</project.junit.jupiter.version>
+        <project.junit.platform.version>1.0.0-M4</project.junit.platform.version>
     </properties>
 
     <modules>
