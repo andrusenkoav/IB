@@ -1,13 +1,13 @@
-package ru.ibank.model.user;
+package ru.ibank.db.dto;
 
 
-import ru.ibank.model.user.adapter.LocalDateAdapter;
-
+import ru.ibank.db.adapter.LocalDateAdapter;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @XmlRootElement
 @XmlType (propOrder = {"id","lastName","firstName","middleName","birthday"})
@@ -69,5 +69,21 @@ public class UserDTO {
                 ", lastName='" + lastName + '\'' +
                 ", birthday=" + birthday +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserDTO userDTO = (UserDTO) o;
+        return Objects.equals(firstName, userDTO.firstName) &&
+                Objects.equals(middleName, userDTO.middleName) &&
+                Objects.equals(lastName, userDTO.lastName) &&
+                Objects.equals(birthday, userDTO.birthday);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, middleName, lastName, birthday);
     }
 }

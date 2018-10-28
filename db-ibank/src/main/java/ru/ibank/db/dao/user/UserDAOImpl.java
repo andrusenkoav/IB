@@ -1,7 +1,8 @@
-package ru.ibank.db.mapper.user;
+package ru.ibank.db.dao.user;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import ru.ibank.db.dto.UserDTO;
 
 
 public class UserDAOImpl implements UserDAO {

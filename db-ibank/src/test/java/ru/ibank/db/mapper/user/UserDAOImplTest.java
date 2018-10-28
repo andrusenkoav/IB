@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ru.ibank.db.dao.user.UserDAOImpl;
+import ru.ibank.db.dto.UserDTO;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -18,7 +20,7 @@ class UserDAOImplTest {
 
     @BeforeAll
     static void init() {
-        ctx = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/beans.xml", "META-INF/spring/applicationContext.xml"});
+        ctx = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/applicationContext.xml", "META-INF/spring/beans.xml"});
         userService = ctx.getBean("userDAOImpl", UserDAOImpl.class);
         user = new UserDTO();
         user.setLastName("Иванов");

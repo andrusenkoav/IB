@@ -1,4 +1,4 @@
-package ru.ibank.db.mapper.bic;
+package ru.ibank.db.dto;
 
 
 import java.time.LocalDate;

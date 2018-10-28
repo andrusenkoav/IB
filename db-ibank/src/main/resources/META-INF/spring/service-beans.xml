@@ -8,7 +8,7 @@
 
     <osgi:service id="userService"
                   ref="userDAOImpl"
-                  interface="ru.ibank.db.mapper.user.UserDAO"/>
+                  interface="ru.ibank.db.dao.user.UserDAO"/>
 
 
 
@@ -18,6 +18,16 @@
 
     <osgi:service id="postgresqlXADataSource"
                   ref="xaDataSource"
-                  interface="javax.sql.XADataSource"/>
+                  interface="javax.sql.XADataSource">
+        <service-properties>
+            <entry key="aries.xa.name" value="postgresqlDS"/>
+            <entry key="aries.xa.pooling" value="true"/>
+            <entry key="aries.xa.poolMinSize" value="10"/>
+            <entry key="aries.xa.poolMaxSize" value="100"/>
+            <entry key="aries.xa.transaction" value="xa"/>
+            <entry key="aries.xa.partitionStrategy" value="none"/>
+            <entry key="aries.xa.allConnectionsEquals" value="false"/>
+        </service-properties>
+    </osgi:service>
 
 </beans>

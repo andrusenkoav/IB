@@ -1,4 +1,6 @@
-package ru.ibank.db.mapper.user;
+package ru.ibank.db.dao.user;
+
+import ru.ibank.db.dto.UserDTO;
 
 public interface UserDAO {
 

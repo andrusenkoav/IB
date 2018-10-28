@@ -27,7 +27,11 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="postgresqlXADataSource"/>
         <property name="mapperLocations" value="META-INF/mapper/*.xml"/>
+        <property name="transactionFactory" ref="transactionFactory"/>
     </bean>
+
+
+    <bean id="transactionFactory" class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory"/>
 
 
     <osgi:reference id="postgresqlXADataSource"

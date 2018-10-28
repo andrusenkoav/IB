@@ -4,7 +4,7 @@
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userDAOImpl" class="ru.ibank.db.mapper.user.UserDAOImpl">
+    <bean id="userDAOImpl" class="ru.ibank.db.dao.user.UserDAOImpl">
         <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
     </bean>
 

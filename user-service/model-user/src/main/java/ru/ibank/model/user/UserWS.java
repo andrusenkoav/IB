@@ -1,5 +1,7 @@
 package ru.ibank.model.user;
 
+import ru.ibank.db.dto.UserDTO;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;

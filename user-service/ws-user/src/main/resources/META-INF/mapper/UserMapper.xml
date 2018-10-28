@@ -5,7 +5,7 @@
 
 <mapper namespace="ru.ibank.UserMapper">
 
-    <resultMap id="userResultMap" type="ru.ibank.model.user.UserDTO">
+    <resultMap id="userResultMap" type="ru.ibank.db.dto.UserDTO">
         <result property="firstName" column="first_name"/>
         <result property="middleName" column="middle_name"/>
         <result property="lastName" column="last_name"/>
@@ -16,7 +16,7 @@
         select * from customers.person where id = #{id}
     </select>
 
-    <insert id="insert" parameterType="ru.ibank.model.user.UserDTO" keyProperty="id">
+    <insert id="insert" parameterType="ru.ibank.db.dto.UserDTO" keyProperty="id">
         <selectKey keyProperty="id" resultType="long" order="BEFORE">
             select nextval('customers.seq_person') as id
         </selectKey>
@@ -27,7 +27,7 @@
         delete from customers.person where id = #{id}
     </delete>
 
-    <update id="update" parameterType="ru.ibank.model.user.UserDTO">
+    <update id="update" parameterType="ru.ibank.db.dto.UserDTO">
         update customers.person
         set first_name = #{firstName},
             middle_name = #{middleName},
