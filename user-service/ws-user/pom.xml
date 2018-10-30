@@ -77,26 +77,14 @@
             <version>${project.camel.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-groovy</artifactId>
-            <version>${project.camel.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-script</artifactId>
-            <version>${project.camel.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.camel</groupId>
-            <artifactId>camel-test-spring</artifactId>
-            <version>${project.camel.version}</version>
-            <scope>test</scope>
-        </dependency>
-
         <!-- MyBatis -->
+
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-mybatis</artifactId>
+            <version>${project.camel.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
@@ -109,13 +97,12 @@
             <version>1.3.2</version>
         </dependency>
 
-        <!-- Camex cxf -->
+        <!-- cxf -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http-jetty</artifactId>
             <version>${project.cxf.version}</version>
         </dependency>
-
 
         <!-- logging -->
 
@@ -128,6 +115,20 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${project.slf4j.version}</version>
+        </dependency>
+
+        <!-- testing -->
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test-spring</artifactId>
+            <version>${project.camel.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
         </dependency>
 
     </dependencies>

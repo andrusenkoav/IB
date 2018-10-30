@@ -6,12 +6,6 @@
                            http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
 
 
-    <osgi:service id="userService"
-                  ref="userDAOImpl"
-                  interface="ru.ibank.db.dao.user.UserDAO"/>
-
-
-
     <osgi:service id="postgresqlDataSource"
                     ref="dataSource"
                     interface="javax.sql.DataSource"/>

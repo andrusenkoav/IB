@@ -5,6 +5,7 @@
         <feature>camel-cxf</feature>
         <feature>camel-spring</feature>
         <feature>spring-jdbc</feature>
+        <feature>camel-mybatis</feature>
         <feature>connector</feature>
         <feature>transaction</feature>
     </feature>
