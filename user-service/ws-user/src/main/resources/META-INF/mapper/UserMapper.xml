@@ -23,7 +23,7 @@
         insert into customers.person (id, last_name, first_name, middle_name, birthday) values (#{id}, #{lastName}, #{firstName}, #{middleName}, #{birthday})
     </insert>
 
-    <delete id="delete">
+    <delete id="delete" parameterType="long">
         delete from customers.person where id = #{id}
     </delete>
 

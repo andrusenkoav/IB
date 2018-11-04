@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="wss4jInInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+        <constructor-arg>
+            <map>
+                <entry key="action" value="UsernameToken"/>
+                <entry key="passwordType" value="PasswordDigest"/>
+                <entry key="passwordCallbackRef">
+                    <ref bean="passwordCallback"/>
+                </entry>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <bean id="passwordCallback" class="ru.ibank.ws.security.ServerPasswordCallback">
+        <constructor-arg name="sqlSessionFactory">
+            <ref bean="sqlSessionFactory"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="postgresqlDataSource"/>
+        <property name="mapperLocations" value="META-INF/mapper/*.xml"/>
+    </bean>
+
+</beans>
