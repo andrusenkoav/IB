@@ -17,9 +17,7 @@
     </bean>
 
     <bean id="passwordCallback" class="ru.ibank.ws.security.ServerPasswordCallback">
-        <constructor-arg name="sqlSessionFactory">
-            <ref bean="sqlSessionFactory"/>
-        </constructor-arg>
+        <constructor-arg ref="sqlSessionFactory"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
