@@ -33,8 +33,8 @@
     </bean>
 
 
-    <bean id="transactionFactory" class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory"/>
+    <!--bean id="transactionFactory" class="org.apache.ibatis.transaction.managed.ManagedTransactionFactory"/-->
 
-    <bean id="transactionFactory1" class="org.mybatis.spring.transaction.SpringManagedTransactionFactory"/>
+    <bean id="transactionFactory" class="org.mybatis.spring.transaction.SpringManagedTransactionFactory"/>
 
 </beans>

@@ -21,14 +21,6 @@
                 <when>
                     <simple>${in.header.operationName} == "findUserById"</simple>
                     <to uri="mybatis:ru.ibank.UserMapper.findUserById?statementType=SelectOne"/>
-                    <choice>
-                        <when>
-                            <simple>${body} == null</simple>
-                            <setFaultBody>
-                                <constant>User not found</constant>
-                            </setFaultBody>
-                        </when>
-                    </choice>
                 </when>
                 <when>
                     <simple>${in.header.operationName} == "addUser"</simple>
