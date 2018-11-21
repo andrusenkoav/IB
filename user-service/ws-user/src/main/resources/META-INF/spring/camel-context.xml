@@ -13,6 +13,8 @@
         <route id="userRoute">
             <from uri="cxf:bean:userWS"/>
 
+            <removeHeaders pattern="*" excludePattern="operationName"/>
+
             <setBody>
                 <simple>${body[0]}</simple>
             </setBody>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:osgi="http://www.springframework.org/schema/osgi"
+       xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
+       xmlns:ctx="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+       http://www.springframework.org/schema/osgi-compendium http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+">
+
+    <osgix:cm-properties id="ibankProperties"
+                         persistent-id="ru.ibank.db">
+
+        <prop key="db.url">jdbc:postgresql://localhost:5432/iBank</prop>
+        <prop key="db.username">postgres</prop>
+        <prop key="db.password">postgres</prop>
+        <prop key="db.poolMaximumActiveConnections">10</prop>
+        <prop key="db.poolMaximumIdleConnections">10</prop>
+        <prop key="db.poolTimeToWait">600</prop>
+        <prop key="db.poolMaximumCheckoutTime">600</prop>
+
+        <prop key="db.xa.pooling">true</prop>
+        <prop key="db.xa.poolMinSize">10</prop>
+        <prop key="db.xa.poolMaxSize">100</prop>
+        <prop key="db.xa.transaction">xa</prop>
+        <prop key="db.xa.partitionStrategy">none</prop>
+        <prop key="db.xa.allConnectionsEquals">false</prop>
+
+    </osgix:cm-properties>
+
+    <ctx:property-placeholder properties-ref="ibankProperties"/>
+
+    <osgi:service id="postgresqlDataSource"
+                    ref="dataSource"
+                    interface="javax.sql.DataSource"/>
+
+    <osgi:service id="postgresqlXADataSource"
+                  ref="xaDataSource"
+                  interface="javax.sql.XADataSource">
+        <service-properties>
+            <entry key="aries.xa.name" value="postgresqlDS"/>
+            <entry key="aries.xa.pooling" value="${db.xa.pooling}"/>
+            <entry key="aries.xa.poolMinSize" value="${db.xa.poolMinSize}"/>
+            <entry key="aries.xa.poolMaxSize" value="${db.xa.poolMaxSize}"/>
+            <entry key="aries.xa.transaction" value="${db.xa.transaction}"/>
+            <entry key="aries.xa.partitionStrategy" value="${db.xa.partitionStrategy}"/>
+            <entry key="aries.xa.allConnectionsEquals" value="${db.xa.allConnectionsEquals}"/>
+        </service-properties>
+    </osgi:service>
+
+</beans>

@@ -9,4 +9,8 @@
     <osgi:reference id="postgresqlDataSource"
                     interface="javax.sql.DataSource"/>
 
+    <osgi:service id="inInterceptorWSSecurity"
+                  ref="wss4jInInterceptor"
+                  interface="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor"/>
+
 </beans>

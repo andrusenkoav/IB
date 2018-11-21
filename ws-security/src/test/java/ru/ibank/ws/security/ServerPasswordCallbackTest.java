@@ -22,7 +22,7 @@ public class ServerPasswordCallbackTest {
     @Before
     public void init (){
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/beans.xml",
-                                                                                             "META-INF/spring/reference-beans.xml"});
+                                                                                             "META-INF/spring/test-beans.xml"});
         serverPasswordCallback = ctx.getBean("passwordCallback", ServerPasswordCallback.class);
         callbacks[0] = wsPasswordCallback;
     }

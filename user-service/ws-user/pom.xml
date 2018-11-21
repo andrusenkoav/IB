@@ -54,7 +54,6 @@
             <groupId>org.springframework.osgi</groupId>
             <artifactId>spring-osgi-core</artifactId>
             <version>1.2.1</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Apache Camel -->
@@ -98,6 +97,7 @@
         </dependency>
 
         <!-- cxf -->
+
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http-jetty</artifactId>
@@ -118,17 +118,12 @@
         </dependency>
 
         <!-- testing -->
+
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-test-spring</artifactId>
             <version>${project.camel.version}</version>
             <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
         </dependency>
 
     </dependencies>

@@ -19,14 +19,15 @@ public class ServerPasswordCallback implements CallbackHandler {
     public void handle(Callback[] callbacks) throws java.io.IOException, UnsupportedCallbackException {
 
         WSPasswordCallback pc = (WSPasswordCallback) callbacks[0];
+        SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        try(SqlSession sqlSession = sqlSessionFactory.openSession()) {
-
+        try {
             String password = sqlSession.selectOne("otpUserService.getPassword", pc.getIdentifier());
-
             if (password != null) {
                 pc.setPassword(password);
             }
+        } finally {
+            sqlSession.close();
         }
     }
 }
