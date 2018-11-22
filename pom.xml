@@ -25,7 +25,7 @@
         <module>features</module>
         <module>db-ibank</module>
         <module>user-service</module>
-        <module>ws-security</module>
+        <module>ib-security</module>
     </modules>
 
 </project>
