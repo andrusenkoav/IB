@@ -8,7 +8,8 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
     <camelContext xmlns="http://camel.apache.org/schema/spring"
-                  id="userContext">
+                  id="userContext"
+                  handleFault="true">
 
         <route id="userRoute">
             <from uri="cxf:bean:userWS"/>
@@ -23,6 +24,14 @@
                 <when>
                     <simple>${in.header.operationName} == "findUserById"</simple>
                     <to uri="mybatis:ru.ibank.UserMapper.findUserById?statementType=SelectOne"/>
+                    <choice>
+                        <when>
+                            <simple>${body} == null</simple>
+                            <setFaultBody>
+                                <constant>User not found</constant>
+                            </setFaultBody>
+                        </when>
+                    </choice>
                 </when>
                 <when>
                     <simple>${in.header.operationName} == "addUser"</simple>

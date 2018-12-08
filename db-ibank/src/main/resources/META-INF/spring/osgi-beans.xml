@@ -34,8 +34,8 @@
     <ctx:property-placeholder properties-ref="ibankProperties"/>
 
     <osgi:service id="postgresqlDataSource"
-                    ref="dataSource"
-                    interface="javax.sql.DataSource"/>
+                  ref="dataSource"
+                  interface="javax.sql.DataSource"/>
 
     <osgi:service id="postgresqlXADataSource"
                   ref="xaDataSource"
