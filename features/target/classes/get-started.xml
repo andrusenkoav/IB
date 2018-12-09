@@ -14,13 +14,13 @@
         <bundle>mvn:org.mybatis/mybatis/3.4.5</bundle>
         <bundle>mvn:org.mybatis/mybatis-spring/1.3.2</bundle>
         <bundle>mvn:org.postgresql/postgresql/42.2.2</bundle>
-        <bundle>mvn:ru.ibank/db-ibank/1.0.0.SNAPSHOT</bundle>
+        <bundle>mvn:ru.ibank/db-ibank/1.0.0-SNAPSHOT</bundle>
     </feature>
 
     <feature name="ibank-user-service" version="1.0.1">
-        <bundle>mvn:ru.ibank/model-user/1.0.0.SNAPSHOT</bundle>
-        <bundle>mvn:ru.ibank/ws-user/1.0.0.SNAPSHOT</bundle>
-        <bundle>mvn:ru.ibank/ib-security/1.0.0.SNAPSHOT</bundle>
+        <bundle>mvn:ru.ibank/model-user/1.0.0-SNAPSHOT</bundle>
+        <bundle>mvn:ru.ibank/ws-user/1.0.0-SNAPSHOT</bundle>
+        <bundle>mvn:ru.ibank/ib-security/1.0.0-SNAPSHOT</bundle>
     </feature>
 
 </features>

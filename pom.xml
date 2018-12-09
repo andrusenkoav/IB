@@ -6,8 +6,8 @@
 
     <groupId>ru.ibank</groupId>
     <artifactId>i-bank</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <version>1.0.0.SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
