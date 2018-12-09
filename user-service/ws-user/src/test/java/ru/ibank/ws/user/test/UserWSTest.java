@@ -1,6 +1,8 @@
 package ru.ibank.ws.user.test;
 
+import org.apache.camel.CamelExecutionException;
 import org.apache.camel.test.spring.CamelSpringTestSupport;
+import org.apache.cxf.binding.soap.SoapFault;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -57,7 +59,6 @@ public class UserWSTest extends CamelSpringTestSupport {
     @Test
     public void updateUserTest() {
         List<UserDTO> params = new ArrayList();
-
         user.setFirstName("Иван");
         params.add(user);
 
@@ -74,6 +75,18 @@ public class UserWSTest extends CamelSpringTestSupport {
         List<Boolean> result = (ArrayList) template.requestBodyAndHeader(ENDPOINT, params, "operationName", "deleteUser");
         Boolean deleted = result.get(0);
         Assert.assertTrue(deleted);
+    }
+
+    @Test
+    public void findNotExistUserByIdTest() {
+        List<Long> params = new ArrayList();
+        params.add(-1L);
+        try {
+            template.requestBodyAndHeader(ENDPOINT, params, "operationName", "findUserById");
+        } catch (CamelExecutionException e){
+           SoapFault fault = e.getExchange().getException(SoapFault.class);
+           Assert.assertEquals("User not found", fault.getMessage());
+        }
     }
 
 }

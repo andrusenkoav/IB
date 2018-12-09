@@ -3,6 +3,8 @@ package ru.ibank.ws.security;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.wss4j.common.ext.WSPasswordCallback;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
@@ -10,6 +12,7 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 
 public class ServerPasswordCallback implements CallbackHandler {
 
+    private final Logger LOG = LoggerFactory.getLogger(ServerPasswordCallback.class);
     private final SqlSessionFactory sqlSessionFactory;
 
     public ServerPasswordCallback(SqlSessionFactory sqlSessionFactory) {
@@ -26,6 +29,8 @@ public class ServerPasswordCallback implements CallbackHandler {
             if (password != null) {
                 pc.setPassword(password);
             }
+        } catch (java.lang.Exception e) {
+            LOG.error("Could not get password");
         } finally {
             sqlSession.close();
         }
