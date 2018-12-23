@@ -21,7 +21,10 @@ public class UserWSTest extends CamelSpringTestSupport {
 
     @Override
     protected AbstractApplicationContext createApplicationContext() {
-        return new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/beans.xml", "META-INF/spring/camel-context.xml"});
+        return new ClassPathXmlApplicationContext(new String[] {"META-INF/spring/beans.xml",
+                                                                "META-INF/spring/osgi-beans.xml",
+                                                                "META-INF/spring/cxf-beans.xml",
+                                                                "META-INF/spring/camel-context.xml"});
     }
 
     @BeforeClass
