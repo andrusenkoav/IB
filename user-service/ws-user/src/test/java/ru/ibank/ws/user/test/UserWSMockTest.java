@@ -4,6 +4,7 @@ import org.apache.camel.EndpointInject;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.model.ProcessorDefinition;
 import org.apache.camel.test.spring.CamelSpringTestSupport;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -46,6 +47,16 @@ public class UserWSMockTest extends CamelSpringTestSupport {
         return "mybatis:ru.ibank.UserMapper.*";
     }
 
+
+    @Override
+    public boolean isUseDebugger() {
+        return true;
+    }
+
+    @Override
+    protected void debugBefore(Exchange exchange, Processor processor, ProcessorDefinition<?> definition, String id, String label) {
+        log.info("Before: " + definition);
+    }
 
     @BeforeClass
     public static void init() {
