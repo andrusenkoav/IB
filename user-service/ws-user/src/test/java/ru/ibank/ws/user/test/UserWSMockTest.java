@@ -55,7 +55,7 @@ public class UserWSMockTest extends CamelSpringTestSupport {
 
     @Override
     protected void debugBefore(Exchange exchange, Processor processor, ProcessorDefinition<?> definition, String id, String label) {
-        log.info("Before: " + definition);
+        log.info("Before: " + definition + " Body: " + exchange.getIn().getBody());
     }
 
     @BeforeClass
