@@ -43,6 +43,11 @@ public class UserWSMockTest extends CamelSpringTestSupport {
     }
 
     @Override
+    public boolean isCreateCamelContextPerClass() {
+        return true;
+    }
+
+    @Override
     public String isMockEndpointsAndSkip() {
         return "mybatis:ru.ibank.UserMapper.*";
     }
