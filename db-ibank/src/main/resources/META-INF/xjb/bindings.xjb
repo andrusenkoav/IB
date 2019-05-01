@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_1.xsd"
+        jaxb:version="2.1">
+
+    <jaxb:globalBindings>
+        <jaxb:javaType name="java.time.LocalDate"
+                       xmlType="xs:date"
+                       parseMethod="parse"
+                       printMethod="toString"/>
+
+        <jaxb:javaType name="java.time.LocalDateTime"
+                       xmlType="xs:dateTime"
+                       parseMethod="parse"
+                       printMethod="toString"/>
+    </jaxb:globalBindings>
+
+    <jaxb:bindings schemaLocation="../xsd/user.xsd">
+        <jaxb:schemaBindings>
+            <jaxb:package name="ru.ibank.db.dto"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+</jaxb:bindings>
