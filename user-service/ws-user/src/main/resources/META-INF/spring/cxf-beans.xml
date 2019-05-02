@@ -11,6 +11,9 @@
                      address="/UserWs">
 
         <cxf:properties>
+            <entry key="schema-validation-enabled" value="true"/>
+            <entry key="faultStackTraceEnabled" value="false"/>
+            <entry key="exceptionMessageCauseEnabled" value="false"/>
             <entry key="dataFormat" value="POJO"/>
         </cxf:properties>
 
