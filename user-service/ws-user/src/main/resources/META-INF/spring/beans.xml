@@ -10,7 +10,7 @@
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="postgresqlXADataSource"/>
-        <property name="mapperLocations" value="META-INF/mapper/*.xml"/>
+        <property name="mapperLocations" value="META-INF/mappers/*.xml"/>
         <property name="transactionFactory" ref="transactionFactory"/>
     </bean>
 

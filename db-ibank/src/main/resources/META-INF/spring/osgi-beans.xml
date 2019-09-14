@@ -21,7 +21,6 @@
         <prop key="db.poolMaximumIdleConnections">10</prop>
         <prop key="db.poolTimeToWait">600</prop>
         <prop key="db.poolMaximumCheckoutTime">600</prop>
-
         <prop key="db.xa.pooling">true</prop>
         <prop key="db.xa.poolMinSize">10</prop>
         <prop key="db.xa.poolMaxSize">100</prop>

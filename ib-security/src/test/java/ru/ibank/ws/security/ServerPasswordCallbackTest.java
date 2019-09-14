@@ -28,7 +28,7 @@ public class ServerPasswordCallbackTest {
     }
 
     @Test
-    public void handle() {
+    public void handleTest() {
 
         try {
             serverPasswordCallback.handle(callbacks);

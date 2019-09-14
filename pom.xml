@@ -12,12 +12,41 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <project.spring.version>3.2.16.RELEASE</project.spring.version>
-        <project.camel.version>2.17.0</project.camel.version>
-        <project.cxf.version>3.1.5</project.cxf.version>
-        <project.activemq.version>5.11.0</project.activemq.version>
-        <project.slf4j.version>1.7.25</project.slf4j.version>
+
+        <camel.version>2.17.0</camel.version>
+        <spring.version>4.2.5.RELEASE</spring.version>
+        <spring-osgi-core.version>1.2.1</spring-osgi-core.version>
+        <cxf.version>3.1.5</cxf.version>
+        <mybatis.version>3.4.5</mybatis.version>
+        <mybatis-spring.version>1.3.2</mybatis-spring.version>
+        <activemq.version>5.11.0</activemq.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <junit.version>4.12</junit.version>
+
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-jaxb2-plugin.version>0.14.0</maven-jaxb2-plugin.version>
+        <maven-bundle-plugin.version>3.5.1</maven-bundle-plugin.version>
+        <sonar-maven-plugin.version>3.6.1.1688</sonar-maven-plugin.version>
+
+
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+        </dependencies>
+    </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>${sonar-maven-plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
 
     <modules>
         <module>features</module>

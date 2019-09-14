@@ -13,12 +13,14 @@ import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.ibank.db.dto.UserDTO;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserWSMockTest extends CamelSpringTestSupport {
+public class UserWSRouteTest extends CamelSpringTestSupport {
 
-    private final String ENDPOINT = "cxf:bean:userWS";
+    private static final String ENDPOINT = "cxf:bean:userWS";
+    private static final String OPERATION_NAME = "operationName";
     private static UserDTO user;
 
     @EndpointInject(uri="mock:mybatis:ru.ibank.UserMapper.insert")
@@ -69,11 +71,11 @@ public class UserWSMockTest extends CamelSpringTestSupport {
         user.setLastName("Петров");
         user.setFirstName("Петр");
         user.setMiddleName("Петрович");
+        user.setBirthday(LocalDate.parse("1983-07-11"));
     }
 
     @Test
     public void addUserTest() {
-
         mockMybatisAddUser.whenAnyExchangeReceived(new Processor() {
             @Override
             public void process(Exchange exchange) throws Exception {
@@ -85,27 +87,19 @@ public class UserWSMockTest extends CamelSpringTestSupport {
         List<UserDTO> params = new ArrayList();
         params.add(user);
 
-        List<Long> result = (ArrayList) template.requestBodyAndHeader(ENDPOINT, params, "operationName", "addUser");
+        List<Long> result = template.requestBodyAndHeader(ENDPOINT, params, OPERATION_NAME, "addUser", ArrayList.class);
 
         Long id = result.get(0);
-        Assert.assertNotNull(id);
-
+        Assert.assertNotNull("Ошибка создания пользователя", id);
         user.setId(id);
-        System.out.println("Создан пользователь, id=" + id);
-
     }
 
 
     @Test
     public void findUserByIdTest() {
-
         mockMybatisFindUserById.whenAnyExchangeReceived(new Processor() {
             @Override
             public void process(Exchange exchange) throws Exception {
-                UserDTO user = new UserDTO();
-                user.setLastName("Петров");
-                user.setFirstName("Петр");
-                user.setMiddleName("Петрович");
                 exchange.getOut().setBody(user);
             }
         });
@@ -113,15 +107,13 @@ public class UserWSMockTest extends CamelSpringTestSupport {
         List<Long> params = new ArrayList();
         params.add(user.getId());
 
-        List<UserDTO> result = (ArrayList) template.requestBodyAndHeader(ENDPOINT, params, "operationName", "findUserById");
+        List<UserDTO> result = template.requestBodyAndHeader(ENDPOINT, params, OPERATION_NAME, "findUserById", ArrayList.class);
         UserDTO findUser = result.get(0);
-        assertEquals(user, findUser);
-
+        assertNotNull("Пользователь не найден", findUser);
     }
 
     @Test
     public void updateUserTest(){
-
         mockMybatisUpdateUser.whenAnyExchangeReceived(new Processor() {
             @Override
             public void process(Exchange exchange) throws Exception {
@@ -134,14 +126,13 @@ public class UserWSMockTest extends CamelSpringTestSupport {
         user.setFirstName("Иван");
         params.add(user);
 
-        List<Boolean> result = (ArrayList) template.requestBodyAndHeader(ENDPOINT, params, "operationName", "updateUser");
+        List<Boolean> result = template.requestBodyAndHeader(ENDPOINT, params, OPERATION_NAME, "updateUser", ArrayList.class);
         Boolean updated = result.get(0);
-        Assert.assertTrue(updated);
+        Assert.assertTrue("Не удалось обновить пользователя", updated);
     }
 
     @Test
     public void deleteUserTest(){
-
         mockMybatisDeleteUser.whenAnyExchangeReceived(new Processor() {
             @Override
             public void process(Exchange exchange) throws Exception {
@@ -152,8 +143,8 @@ public class UserWSMockTest extends CamelSpringTestSupport {
         List<Long> params = new ArrayList();
         params.add(user.getId());
 
-        List<Boolean> result = (ArrayList) template.requestBodyAndHeader(ENDPOINT, params, "operationName", "deleteUser");
+        List<Boolean> result = template.requestBodyAndHeader(ENDPOINT, params, OPERATION_NAME, "deleteUser", ArrayList.class);
         Boolean deleted = result.get(0);
-        Assert.assertTrue(deleted);
+        Assert.assertTrue("Не удалось удалить пользователя", deleted);
     }
 }

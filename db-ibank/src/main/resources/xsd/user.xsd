@@ -2,17 +2,17 @@
     <xs:complexType name="UserDTO">
         <xs:sequence>
             <xs:element name="id" type="xs:long" minOccurs="0" />
-            <xs:element name="firstName" type="xs:string" minOccurs="1"/>
+            <xs:element name="firstName" type="xs:string"/>
             <xs:element name="middleName" type="xs:string" minOccurs="0"/>
-            <xs:element name="lastName" type="xs:string" minOccurs="1"/>
-            <xs:element name="birthday" type="xs:date" minOccurs="1"/>
+            <xs:element name="lastName" type="xs:string"/>
+            <xs:element name="birthday" type="xs:date"/>
         </xs:sequence>
     </xs:complexType>
 
     <xs:complexType name="AddressDTO">
         <xs:sequence>
-            <xs:element name="type" type="xs:string" minOccurs="1"/>
-            <xs:element name="country" type="xs:string" minOccurs="1"/>
+            <xs:element name="type" type="xs:string"/>
+            <xs:element name="country" type="xs:string"/>
             <xs:element name="region" type="xs:string" minOccurs="0"/>
             <xs:element name="city" type="xs:string" minOccurs="0"/>
             <xs:element name="house" type="xs:string" minOccurs="0"/>
