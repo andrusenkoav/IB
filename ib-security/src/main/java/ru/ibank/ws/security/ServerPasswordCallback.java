@@ -12,7 +12,7 @@ import javax.security.auth.callback.UnsupportedCallbackException;
 
 public class ServerPasswordCallback implements CallbackHandler {
 
-    private final Logger logger = LoggerFactory.getLogger(ServerPasswordCallback.class);
+    private static final Logger LOGGER= LoggerFactory.getLogger(ServerPasswordCallback.class);
     private final SqlSessionFactory sqlSessionFactory;
 
     public ServerPasswordCallback(SqlSessionFactory sqlSessionFactory) {
@@ -30,7 +30,7 @@ public class ServerPasswordCallback implements CallbackHandler {
                 pc.setPassword(password);
             }
         } catch (java.lang.Exception e) {
-            logger.error("Could not get password");
+            LOGGER.error("Could not get password");
         } finally {
             sqlSession.close();
         }

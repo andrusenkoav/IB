@@ -17,27 +17,19 @@ public class ServerPasswordCallbackTest {
 
     private ServerPasswordCallback serverPasswordCallback;
     private final Callback[] callbacks = new Callback[1];
-    private final WSPasswordCallback wsPasswordCallback = new WSPasswordCallback("joe",0);
+    private final WSPasswordCallback wsPasswordCallback = new WSPasswordCallback("joe", 0);
 
     @Before
-    public void init (){
+    public void init() {
         ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/beans.xml",
-                                                                                             "META-INF/spring/osgi-beans.xml"});
+                "META-INF/spring/osgi-beans.xml"});
         serverPasswordCallback = ctx.getBean("passwordCallback", ServerPasswordCallback.class);
         callbacks[0] = wsPasswordCallback;
     }
 
     @Test
-    public void handleTest() {
-
-        try {
-            serverPasswordCallback.handle(callbacks);
-            assertEquals("123", wsPasswordCallback.getPassword());
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (UnsupportedCallbackException e) {
-            e.printStackTrace();
-        }
-
+    public void handleTest() throws IOException, UnsupportedCallbackException {
+        serverPasswordCallback.handle(callbacks);
+        assertEquals("123", wsPasswordCallback.getPassword());
     }
 }
