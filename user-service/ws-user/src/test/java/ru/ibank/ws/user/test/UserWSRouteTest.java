@@ -23,25 +23,25 @@ public class UserWSRouteTest extends CamelSpringTestSupport {
     private static final String OPERATION_NAME = "operationName";
     private static UserDTO user;
 
-    @EndpointInject(uri="mock:mybatis:ru.ibank.UserMapper.insert")
+    @EndpointInject(uri = "mock:mybatis:ru.ibank.UserMapper.insert")
     MockEndpoint mockMybatisAddUser;
 
-    @EndpointInject(uri="mock:mybatis:ru.ibank.UserMapper.findUserById")
+    @EndpointInject(uri = "mock:mybatis:ru.ibank.UserMapper.findUserById")
     MockEndpoint mockMybatisFindUserById;
 
-    @EndpointInject(uri="mock:mybatis:ru.ibank.UserMapper.update")
+    @EndpointInject(uri = "mock:mybatis:ru.ibank.UserMapper.update")
     MockEndpoint mockMybatisUpdateUser;
 
-    @EndpointInject(uri="mock:mybatis:ru.ibank.UserMapper.delete")
+    @EndpointInject(uri = "mock:mybatis:ru.ibank.UserMapper.delete")
     MockEndpoint mockMybatisDeleteUser;
 
 
     @Override
     protected AbstractApplicationContext createApplicationContext() {
-        return new ClassPathXmlApplicationContext(new String[] {"META-INF/spring/beans.xml",
-                                                                "META-INF/spring/osgi-beans.xml",
-                                                                "META-INF/spring/cxf-beans.xml",
-                                                                "META-INF/spring/camel-context.xml"});
+        return new ClassPathXmlApplicationContext(new String[]{"META-INF/spring/beans.xml",
+                "META-INF/spring/osgi-beans.xml",
+                "META-INF/spring/cxf-beans.xml",
+                "META-INF/spring/camel-context.xml"});
     }
 
     @Override
@@ -76,12 +76,9 @@ public class UserWSRouteTest extends CamelSpringTestSupport {
 
     @Test
     public void addUserTest() {
-        mockMybatisAddUser.whenAnyExchangeReceived(new Processor() {
-            @Override
-            public void process(Exchange exchange) throws Exception {
-                user.setId(1L);
-                exchange.getOut().setBody(user);
-            }
+        mockMybatisAddUser.whenAnyExchangeReceived(exchange -> {
+            user.setId(1L);
+            exchange.getOut().setBody(user);
         });
 
         List<UserDTO> params = new ArrayList();
@@ -97,12 +94,8 @@ public class UserWSRouteTest extends CamelSpringTestSupport {
 
     @Test
     public void findUserByIdTest() {
-        mockMybatisFindUserById.whenAnyExchangeReceived(new Processor() {
-            @Override
-            public void process(Exchange exchange) throws Exception {
-                exchange.getOut().setBody(user);
-            }
-        });
+        mockMybatisFindUserById.whenAnyExchangeReceived(exchange ->
+                exchange.getOut().setBody(user));
 
         List<Long> params = new ArrayList();
         params.add(user.getId());
@@ -113,13 +106,9 @@ public class UserWSRouteTest extends CamelSpringTestSupport {
     }
 
     @Test
-    public void updateUserTest(){
-        mockMybatisUpdateUser.whenAnyExchangeReceived(new Processor() {
-            @Override
-            public void process(Exchange exchange) throws Exception {
-                exchange.getOut().setHeader("CamelMyBatisResult", 1);
-            }
-        });
+    public void updateUserTest() {
+        mockMybatisUpdateUser.whenAnyExchangeReceived(exchange ->
+                exchange.getOut().setHeader("CamelMyBatisResult", 1));
 
         List<UserDTO> params = new ArrayList();
 
@@ -132,13 +121,9 @@ public class UserWSRouteTest extends CamelSpringTestSupport {
     }
 
     @Test
-    public void deleteUserTest(){
-        mockMybatisDeleteUser.whenAnyExchangeReceived(new Processor() {
-            @Override
-            public void process(Exchange exchange) throws Exception {
-                exchange.getOut().setHeader("CamelMyBatisResult", 1);
-            }
-        });
+    public void deleteUserTest() {
+        mockMybatisDeleteUser.whenAnyExchangeReceived(exchange ->
+                exchange.getOut().setHeader("CamelMyBatisResult", 1));
 
         List<Long> params = new ArrayList();
         params.add(user.getId());
